@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shetkari Mitra - Farmer's Friend</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen flex items-center justify-center bg-green-50">
+        <div class="text-center p-8">
+            <h1 class="text-4xl font-bold text-green-700 mb-4">Shetkari Mitra</h1>
+            <p class="text-lg text-gray-600 mb-8">Loading farmer assistance portal...</p>
+            <div class="flex justify-center">
+                <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-600"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Redirect to login page after short delay
+        setTimeout(() => {
+            window.location.href = "auth/login.html";
+        }, 1500);
+    </script>
+</body>
+</html>
