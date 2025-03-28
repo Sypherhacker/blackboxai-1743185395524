@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fertilizer Guide - Shetkari Mitra</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .sidebar {
+            transition: all 0.3s;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+        }
+        .fertilizer-card {
+            transition: all 0.2s;
+        }
+        .fertilizer-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <div class="sidebar fixed md:relative w-64 bg-green-800 text-white h-full z-10">
+            <div class="p-4 border-b border-green-700">
+                <h1 class="text-xl font-bold">Shetkari Mitra</h1>
+                <p class="text-green-200 text-sm">Farmer's Dashboard</p>
+            </div>
+            
+            <nav class="p-4">
+                <div class="mb-8">
+                    <p class="text-green-300 uppercase text-xs font-semibold mb-2">Main Menu</p>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="index.html" class="flex items-center p-2 rounded-lg hover:bg-green-700">
+                                <i class="fas fa-tachometer-alt mr-3"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="diseases.html" class="flex items-center p-2 rounded-lg hover:bg-green-700">
+                                <i class="fas fa-bug mr-3"></i>
+                                <span>Crop Diseases</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center p-2 rounded-lg bg-green-700">
+                                <i class="fas fa-seedling mr-3"></i>
+                                <span>Fertilizers</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="news.html" class="flex items-center p-2 rounded-lg hover:bg-green-700">
+                                <i class="fas fa-newspaper mr-3"></i>
+                                <span>News & Schemes</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="trading.html" class="flex items-center p-2 rounded-lg hover:bg-green-700">
+                                <i class="fas fa-shopping-basket mr-3"></i>
+                                <span>Crop Trading</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <p class="text-green-300 uppercase text-xs font-semibold mb-2">Account</p>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="#" class="flex items-center p-2 rounded-lg hover:bg-green-700">
+                                <i class="fas fa-user mr-3"></i>
+                                <span>Profile</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center p-2 rounded-lg hover:bg-green-700">
+                                <i class="fas fa-cog mr-3"></i>
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="logoutBtn" class="flex items-center p-2 rounded-lg hover:bg-green-700">
+                                <i class="fas fa-sign-out-alt mr-3"></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="flex-1 overflow-auto">
+            <!-- Top Navigation -->
+            <header class="bg-white shadow-sm">
+                <div class="flex items-center justify-between p-4">
+                    <button id="sidebarToggle" class="md:hidden text-gray-600">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                    
+                    <div class="flex items-center space-x-4">
+                        <div class="relative">
+                            <button class="p-2 rounded-full hover:bg-gray-100">
+                                <i class="fas fa-bell text-gray-600"></i>
+                                <span class="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span>
+                            </button>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="h-8 w-8 rounded-full bg-green-600 flex items-center justify-center text-white font-semibold">
+                                U
+                            </div>
+                            <span class="ml-2 text-sm font-medium">User</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Fertilizer Content -->
+            <main class="p-6">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Fertilizer Recommendations</h2>
+                    <p class="text-gray-600">Get personalized fertilizer suggestions for your crops</p>
+                </div>
+                
+                <!-- Crop Selection -->
+                <div class="bg-white rounded-lg shadow p-4 mb-6">
+                    <h3 class="font-semibold mb-4">Select Your Crop</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                        <button class="fertilizer-crop-btn p-3 rounded-lg border border-gray-200 hover:border-green-500 hover:bg-green-50 text-center">
+                            <div class="h-12 w-12 mx-auto mb-2 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                                <i class="fas fa-wheat"></i>
+                            </div>
+                            <span class="text-sm font-medium">Wheat</span>
+                        </button>
+                        
+                        <button class="fertilizer-crop-btn p-3 rounded-lg border border-gray-200 hover:border-green-500 hover:bg-green-50 text-center">
+                            <div class="h-12 w-12 mx-auto mb-2 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                                <i class="fas fa-rice"></i>
+                            </div>
+                            <span class="text-sm font-medium">Rice</span>
+                        </button>
+                        
+                        <button class="fertilizer-crop-btn p-3 rounded-lg border border-gray-200 hover:border-green-500 hover:bg-green-50 text-center">
+                            <div class="h-12 w-12 mx-auto mb-2 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                                <i class="fas fa-corn"></i>
+                            </div>
+                            <span class="text-sm font-medium">Corn</span>
+                        </button>
+                        
+                        <button class="fertilizer-crop-btn p-3 rounded-lg border border-gray-200 hover:border-green-500 hover:bg-green-50 text-center">
+                            <div class="h-12 w-12 mx-auto mb-2 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                            <span class="text-sm font-medium">Soybean</span>
+                        </button>
+                        
+                        <button class="fertilizer-crop-btn p-3 rounded-lg border border-gray-200 hover:border-green-500 hover:bg-green-50 text-center">
+                            <div class="h-12 w-12 mx-auto mb-2 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                                <i class="fas fa-cotton"></i>
+                            </div>
+                            <span class="text-sm font-medium">Cotton</span>
+                        </button>
+                        
+                        <button class="fertilizer-crop-btn p-3 rounded-lg border border-gray-200 hover:border-green-500 hover:bg-green-50 text-center">
+                            <div class="h-12 w-12 mx-auto mb-2 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                                <i class="fas fa-apple-alt"></i>
+                            </div>
+                            <span class="text-sm font-medium">Fruits</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Soil Type Selection -->
+                <div class="bg-white rounded-lg shadow p-4 mb-6">
+                    <h3 class="font-semibold mb-4">Select Soil Type</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <button class="fertilizer-soil-btn p-3 rounded-lg border border-gray-200 hover:border-green-500 hover:bg-green-50 text-center">
+                            <div class="h-12 w-12 mx-auto mb-2 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600">
+                                <i class="fas fa-mountain"></i>
+                            </div>
+                            <span class="text-sm font-medium">Sandy</span>
+                        </button>
+                        
+                        <button class="fertilizer-soil-btn p-3 rounded-lg border border-gray-200 hover:border-green-500 hover:bg-green-50 text-center">
+                            <div class="h-12 w-12 mx-auto mb-2 bg-red-100 rounded-full flex items-center justify-center text-red-600">
+                                <i class="fas fa-layer-group"></i>
+                            </div>
+                            <span class="text-sm font-medium">Clay</span>
+                        </button>
+                        
+                        <button class="fertilizer-soil-btn p-3 rounded-lg border border-gray-200 hover:border-green-500 hover:bg-green-50 text-center">
+                            <div class="h-12 w-12 mx-auto mb-2 bg-gray-100 rounded-full flex items-center justify-center text-gray-600">
+                                <i class="fas fa-tint"></i>
+                            </div>
+                            <span class="text-sm font-medium">Loamy</span>
+                        </button>
+                        
+                        <button class="fertilizer-soil-btn p-3 rounded-lg border border-gray-200 hover:border-green-500 hover:bg-green-50 text-center">
+                            <div class="h-12 w-12 mx-auto mb-2 bg-brown-100 rounded-full flex items-center justify-center text-brown-600">
+                                <i class="fas fa-water"></i>
+                            </div>
+                            <span class="text-sm font-medium">Peaty</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Fertilizer Recommendations -->
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <div class="p-4 border-b">
+                        <h3 class="font-semibold">Recommended Fertilizers</h3>
+                    </div>
+                    <div class="p-4">
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fertilizer</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">NPK Ratio</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Application</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Dosage</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Urea</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Nitrogen</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">46-0-0</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Basal/Top Dressing</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">100-150 kg/ha</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">DAP</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Phosphorus</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">18-46-0</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Basal</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">50-100 kg/ha</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">MOP</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Potassium</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0-0-60</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Basal</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">40-80 kg/ha</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">NPK Complex</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Complete</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">10-26-26</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Basal</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">100-150 kg/ha</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="../js/fertilizers.js"></script>
+</body>
+</html>
